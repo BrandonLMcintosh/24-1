@@ -1,0 +1,30 @@
+{% extends "root/base.html.j2" %}
+
+{% block form %}{% endblock form %}
+
+{% block list %}
+<a href="/add" class="btn btn-success">Add Pet</a>
+<div class="row">
+
+    {% for pet in pets %}
+
+        <div class="card col-md-3">
+            <img src="{{pet.photo_url}}" class="card-img-top" alt="Pet Photo">
+            <div class="card-body">
+                <h5 class="card-title">{{pet.name}}</h5>
+                <p class="card-text">
+                    {% if pet.available %}
+                        <a href="/{{pet.id}}" class="btn btn-success">Available!</a>
+                    {% else %}
+                        <a href="/{{pet.id}}" class="btn btn-secondary">Adopted</a>
+                    {% endif %}
+                    
+                </p>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>
+
+
+{% endblock list %}
